@@ -43,15 +43,15 @@
 .swiper-button-prev:after,
 .swiper-button-next:after {
   background-color: #0059b1;
-  font-size: 30px !important;
+  font-size: 20px !important;
   color: #ffff;
-  padding: 10px 18px;
+  padding: 16px 19px;
   border-radius: 50%;
 }
 
-/* .swiper-button-prev {
-  left: -15px !important;
-} */
-/* .swiper-button-next {
-  right: -15px !important;
-} */
+.swiper-button-prev {
+  left: 13px !important;
+}
+.swiper-button-next {
+  right: 13px !important;
+}

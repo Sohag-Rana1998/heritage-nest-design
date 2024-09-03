@@ -46,11 +46,22 @@ const Nav = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-44 p-2 shadow right-0"
                 >
-                  <li>Buy</li>
-                  <li>Sell</li>
-                  <li>Services</li>
-                  <li>Manage Rentals</li>
-                  <li>Sign In</li>
+                  <Link to={"/buyer-page"}>
+                    <li>Buy</li>
+                  </Link>
+                  <Link to={"/buyer-page"}>
+                    <li>Sell</li>
+                  </Link>
+                  <Link to={"/"}>
+                    <li>Services</li>
+                  </Link>
+                  <Link>
+                    <li>Manage Rentals</li>
+                  </Link>
+
+                  <Link to={"/login"}>
+                    <li>Sign In</li>
+                  </Link>
                 </ul>
               </div>
             </div>
@@ -60,9 +71,15 @@ const Nav = () => {
         {/* Menu for medium and large device */}
         <div className="w-full hidden md:block">
           <ul className="flex items-center gap-8 w-full text-lg">
-            <li>Buy</li>
-            <li>Sell</li>
-            <li>Services</li>
+            <Link to={"/buyer-page"}>
+              <li>Buy</li>
+            </Link>
+            <Link to={"/buyer-page"}>
+              <li>Sell</li>
+            </Link>
+            <Link to={"/buyer-page"}>
+              <li>Services</li>
+            </Link>
           </ul>
         </div>
         <Link to={"/"}>
@@ -77,8 +94,16 @@ const Nav = () => {
         </Link>
         <div className="w-full hidden md:block">
           <ul className="flex justify-end items-center gap-8 w-full text-lg">
-            <li>Manage Rentals</li>
-            <li>Sign In</li>
+            <Link to={"/about"}>
+              <li>About Us</li>
+            </Link>
+
+            <Link>
+              <li>Manage Rentals</li>
+            </Link>
+            <Link to={"/login"}>
+              <li>Sign In</li>
+            </Link>
           </ul>
         </div>
       </div>

@@ -5,9 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useAllReviews from "../../../hooks/useAllReviews";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
@@ -17,6 +17,15 @@ export default function Testimonials() {
   useEffect(() => {
     refetch();
   }, []);
+
+  const [toggle, setToggle] = useState(true);
+  const progressCircle = useRef(null);
+  const progressContent = useRef(null);
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    progressCircle.current.style.setProperty("--progress", 1 - progress);
+    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
+
   const [slidesPerView, setSlidesPerView] = useState(
     getSlidesPerView(window.innerWidth)
   );
@@ -52,9 +61,15 @@ export default function Testimonials() {
         <div className="max-w-7xl mx-auto w-full">
           <Swiper
             slidesPerView={slidesPerView}
-            spaceBetween={50}
-            modules={[Pagination, Autoplay]}
-            className="mySwiper h-[420px]   md:h-[350px]  "
+            loop={true}
+            spaceBetween={20}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            className="mySwiper   h-[420px]   md:h-[350px]  "
+            onAutoplayTimeLeft={onAutoplayTimeLeft}
           >
             {allReviews?.map((review) => (
               <SwiperSlide
@@ -85,6 +100,16 @@ export default function Testimonials() {
                 </div>
               </SwiperSlide>
             ))}
+            {toggle ? (
+              <div className="autoplay-progress hidden" slot="container-end">
+                <svg viewBox="0 0 48 48" ref={progressCircle}>
+                  <circle cx="24" cy="24" r="20"></circle>
+                </svg>
+                <span ref={progressContent}></span>
+              </div>
+            ) : (
+              <></>
+            )}
           </Swiper>
         </div>
       </div>

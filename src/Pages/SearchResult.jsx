@@ -3,10 +3,12 @@ import { GrLocation } from "react-icons/gr";
 import usePropertyByQuery from "../hooks/usePropertyByQuery";
 import useCount from "../hooks/useCount";
 import { Link } from "react-router-dom";
-
+import { Range } from "react-range";
+import Testimonials from "../components/Shared/SocialLogin/Testimonials";
 const SearchResult = () => {
   // const { searchText } = useParams();
   // console.log(searchText);
+  const [values, setValues] = React.useState([50]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [search, setSearch] = useState("");
@@ -210,7 +212,7 @@ const SearchResult = () => {
         ) : (
           <div>
             <div className="w-full flex flex-col justify-center mt-5">
-              {verifiedProperties && verifiedProperties.length === 0 ? (
+              {allProperties && allProperties.length === 0 ? (
                 <h3 className="text-center text-3xl font-bold my-10">
                   {" "}
                   No Job Property Found
@@ -229,7 +231,7 @@ const SearchResult = () => {
                     setLoader(true);
                     setTimeout(setLoader, 1000, false);
                   }}
-                  className="btn w-[40] bg-blue-500 text-white text-right mb-5"
+                  className="btn w-[40] bg-[#0059B1] text-white text-right mb-5"
                 >
                   See All Property
                 </button>
@@ -239,9 +241,62 @@ const SearchResult = () => {
         )}
       </div>
 
-      <div className="bg-[#ECF5FF] w-full">
-        <h3 className="text-3xl font-semibold">Need a Home Loan?</h3>
-        <p>Need a Home Loan?</p>
+      <div className="bg-[#ECF5FF] w-full p-8 flex flex-col md:flex-row items-center gap-5">
+        <div className="w-full md:w-[35%]">
+          <h3 className="text-3xl font-semibold">Need a Home Loan?</h3>
+          <p>Need a Home Loan?</p>
+        </div>
+        <div className="w-full md:w-[60%]">
+          <div className="flex justify-end mb-2">
+            {" "}
+            <h4 className="text-xl font-bold">{values}K</h4>{" "}
+          </div>
+          <Range
+            label="Select your value"
+            step={0.1}
+            min={20}
+            max={60}
+            values={values}
+            onChange={(values) => setValues(values)}
+            renderTrack={({ props, children }) => (
+              <div
+                {...props}
+                style={{
+                  ...props.style,
+                  height: "6px",
+                  width: "100%",
+                  backgroundColor: "#8AB3DB",
+                }}
+              >
+                {children}
+              </div>
+            )}
+            renderThumb={({ props }) => (
+              <div
+                {...props}
+                key={props.key}
+                style={{
+                  ...props.style,
+                  height: "20px",
+                  width: "20px",
+                  borderRadius: "50%",
+                  backgroundColor: "#0059B1",
+                }}
+              />
+            )}
+          />
+          <div className="flex justify-between items-center mt-2">
+            <span className="font-bold">$20K</span>
+            <span className="font-bold">$30K</span>
+            <span className="font-bold">$40K</span>
+            <span className="font-bold">$50K</span>
+            <span className="font-bold">$60K</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <Testimonials />
       </div>
     </div>
   );

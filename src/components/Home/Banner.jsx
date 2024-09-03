@@ -13,8 +13,9 @@ const Banner = () => {
       </div>
       <div className="inset-0 absolute text-white flex justify-center items-center text-center">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-[64px] font-bold mb-8 tracking-tight leading-[72px]">
-            Your Portal to India's <br /> Exquisite Real Estate
+          <h1 className="text-[45px] md:text-[64px] font-bold mb-8 tracking-tight leading-[72px]">
+            Your Portal to India's <br className="hidden md:block" /> Exquisite
+            Real Estate
           </h1>
           <p className="font-semibold mb-12">
             Seamlessly connecting you to the heartbeat of India's prime
