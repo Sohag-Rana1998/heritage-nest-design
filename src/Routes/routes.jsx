@@ -9,6 +9,7 @@ import SearchResult from "../Pages/SearchResult";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import AddProperty from "../Pages/AddProperty";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "/search-result",
         element: <SearchResult />,
+      },
+      {
+        path: "/add-property",
+        element: (
+          <PrivateRoute>
+            <AddProperty />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/property-details/:id",

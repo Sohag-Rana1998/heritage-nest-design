@@ -56,7 +56,7 @@ const Nav = () => {
                   <Link to={"/"}>
                     <li>Services</li>
                   </Link>
-                  <Link>
+                  <Link to={"/add-property"}>
                     <li>Manage Rentals</li>
                   </Link>
                   <Link to={"/about"}>
@@ -102,7 +102,7 @@ const Nav = () => {
               <li>About Us</li>
             </Link>
 
-            <Link>
+            <Link to={"/add-property"}>
               <li>Manage Rentals</li>
             </Link>
             {user ? (
