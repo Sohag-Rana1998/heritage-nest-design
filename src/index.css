@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 700px;
+  line-height: 48px;
+  letter-spacing: -1%;
+}
+
+.react-tabs__tab-list {
+  border: none !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: none !important;
+  margin-right: 15px !important;
+}
+
+.react-tabs__tab {
+  padding: none !important;
+  margin-right: 15px !important;
+}
+
+.react-tabs__tab--selected {
+  border-bottom: 3px solid #0059b1 !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  color: #0059b1 !important;
+  padding: 0px 0px !important;
+  margin: 6px 12px !important;
+}
