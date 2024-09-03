@@ -22,7 +22,7 @@ const Banner = () => {
           </p>
           <Link to={"/buyer-page"}>
             {" "}
-            <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+            <button className="flex btn !border-none hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
               <FaMagnifyingGlass /> Find Property
             </button>
           </Link>

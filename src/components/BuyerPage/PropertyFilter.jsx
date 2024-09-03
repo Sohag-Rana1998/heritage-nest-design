@@ -88,16 +88,280 @@ const PropertyFilter = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="mt-8">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search properties"
+                  className="w-full border input border-[#E5E7EB] pl-10"
+                />
+                <FaMagnifyingGlass className=" absolute   top-[14px] left-4" />
+              </div>
+
+              <div className="w-full mt-8 flex flex-col md:flex-row items-center gap-5 justify-between">
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <GrLocation className="text-[#EE6611] text-2xl" /> Your
+                    Location
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiOutlineHome className="text-[#EE6611] text-2xl" />
+                    Property Type
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiCurrencyDollar className="text-[#EE6611] text-2xl" />
+                    Budget
+                  </label>
+                  <input type="text" className="input w-full bg-[#ECF5FF]" />
+                </div>
+              </div>
+              <div className="w-full mt-8">
+                {" "}
+                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                  <FaMagnifyingGlass /> Find Property
+                </button>
+              </div>
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="mt-8">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search properties"
+                  className="w-full border input border-[#E5E7EB] pl-10"
+                />
+                <FaMagnifyingGlass className=" absolute   top-[14px] left-4" />
+              </div>
+
+              <div className="w-full mt-8 flex flex-col md:flex-row items-center gap-5 justify-between">
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <GrLocation className="text-[#EE6611] text-2xl" /> Your
+                    Location
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiOutlineHome className="text-[#EE6611] text-2xl" />
+                    Property Type
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiCurrencyDollar className="text-[#EE6611] text-2xl" />
+                    Budget
+                  </label>
+                  <input type="text" className="input w-full bg-[#ECF5FF]" />
+                </div>
+              </div>
+              <div className="w-full mt-8">
+                {" "}
+                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                  <FaMagnifyingGlass /> Find Property
+                </button>
+              </div>
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="mt-8">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search properties"
+                  className="w-full border input border-[#E5E7EB] pl-10"
+                />
+                <FaMagnifyingGlass className=" absolute   top-[14px] left-4" />
+              </div>
+
+              <div className="w-full mt-8 flex flex-col md:flex-row items-center gap-5 justify-between">
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <GrLocation className="text-[#EE6611] text-2xl" /> Your
+                    Location
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiOutlineHome className="text-[#EE6611] text-2xl" />
+                    Property Type
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiCurrencyDollar className="text-[#EE6611] text-2xl" />
+                    Budget
+                  </label>
+                  <input type="text" className="input w-full bg-[#ECF5FF]" />
+                </div>
+              </div>
+              <div className="w-full mt-8">
+                {" "}
+                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                  <FaMagnifyingGlass /> Find Property
+                </button>
+              </div>
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="mt-8">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search properties"
+                  className="w-full border input border-[#E5E7EB] pl-10"
+                />
+                <FaMagnifyingGlass className=" absolute   top-[14px] left-4" />
+              </div>
+
+              <div className="w-full mt-8 flex flex-col md:flex-row items-center gap-5 justify-between">
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <GrLocation className="text-[#EE6611] text-2xl" /> Your
+                    Location
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiOutlineHome className="text-[#EE6611] text-2xl" />
+                    Property Type
+                  </label>
+                  <select className="select w-full bg-[#ECF5FF]">
+                    <option disabled selected>
+                      Pick your a option
+                    </option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                  </select>
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="select1"
+                    className="text-lg mb-4 text-[#181818] font-semibold flex items-center gap-2"
+                  >
+                    <HiCurrencyDollar className="text-[#EE6611] text-2xl" />
+                    Budget
+                  </label>
+                  <input type="text" className="input w-full bg-[#ECF5FF]" />
+                </div>
+              </div>
+              <div className="w-full mt-8">
+                {" "}
+                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                  <FaMagnifyingGlass /> Find Property
+                </button>
+              </div>
+            </div>
           </TabPanel>
         </Tabs>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   // const links = [
@@ -64,13 +65,16 @@ const Nav = () => {
             <li>Services</li>
           </ul>
         </div>
-        <div className="w-[110px] h-[80px] hidden md:block">
-          <img
-            src="https://i.postimg.cc/xjksgm2t/Screenshot-6.png"
-            alt="site logo"
-            className="w-full h-full rounded-xl"
-          />
-        </div>
+        <Link to={"/"}>
+          {" "}
+          <div className="w-[60px] h-[80px] hidden md:block">
+            <img
+              src="https://i.postimg.cc/xjksgm2t/Screenshot-6.png"
+              alt="site logo"
+              className="w-full h-full rounded-xl"
+            />
+          </div>
+        </Link>
         <div className="w-full hidden md:block">
           <ul className="flex justify-end items-center gap-8 w-full text-lg">
             <li>Manage Rentals</li>
