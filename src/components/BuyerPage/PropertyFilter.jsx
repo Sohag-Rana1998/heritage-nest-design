@@ -5,6 +5,7 @@ import { GrLocation } from "react-icons/gr";
 import { HiOutlineHome } from "react-icons/hi";
 import { HiCurrencyDollar } from "react-icons/hi2";
 import "react-tabs/style/react-tabs.css";
+import { Link } from "react-router-dom";
 const PropertyFilter = () => {
   return (
     <div className="max-w-7xl w-[80%] shadow-2xl lg:w-[50%] -mt-[220px] bg-white relative z-20  border  mx-auto  p-8 rounded-2xl">
@@ -81,9 +82,11 @@ const PropertyFilter = () => {
               </div>
               <div className="w-full mt-8">
                 {" "}
-                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
-                  <FaMagnifyingGlass /> Find Property
-                </button>
+                <Link to={"/search-result"} className="w-full">
+                  <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                    <FaMagnifyingGlass /> Find Property
+                  </button>
+                </Link>
               </div>
             </div>
           </TabPanel>
@@ -150,9 +153,12 @@ const PropertyFilter = () => {
               </div>
               <div className="w-full mt-8">
                 {" "}
-                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
-                  <FaMagnifyingGlass /> Find Property
-                </button>
+                <Link to={"/search-result"} className="w-full">
+                  {" "}
+                  <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                    <FaMagnifyingGlass /> Find Property
+                  </button>
+                </Link>
               </div>
             </div>
           </TabPanel>
@@ -219,9 +225,12 @@ const PropertyFilter = () => {
               </div>
               <div className="w-full mt-8">
                 {" "}
-                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
-                  <FaMagnifyingGlass /> Find Property
-                </button>
+                <Link to={"/search-result"} className="w-full">
+                  {" "}
+                  <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                    <FaMagnifyingGlass /> Find Property
+                  </button>
+                </Link>
               </div>
             </div>
           </TabPanel>
@@ -288,9 +297,12 @@ const PropertyFilter = () => {
               </div>
               <div className="w-full mt-8">
                 {" "}
-                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
-                  <FaMagnifyingGlass /> Find Property
-                </button>
+                <Link to={"/search-result"} className="w-full">
+                  {" "}
+                  <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                    <FaMagnifyingGlass /> Find Property
+                  </button>
+                </Link>
               </div>
             </div>
           </TabPanel>
@@ -356,10 +368,12 @@ const PropertyFilter = () => {
                 </div>
               </div>
               <div className="w-full mt-8">
-                {" "}
-                <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
-                  <FaMagnifyingGlass /> Find Property
-                </button>
+                <Link to={"/search-result"} className="w-full">
+                  {" "}
+                  <button className="flex btn hover:bg-[#07488a] w-full justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                    <FaMagnifyingGlass /> Find Property
+                  </button>
+                </Link>
               </div>
             </div>
           </TabPanel>

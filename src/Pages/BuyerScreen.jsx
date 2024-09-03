@@ -1,6 +1,9 @@
 import React from "react";
 import PropertyFilter from "../components/BuyerPage/PropertyFilter";
 import States from "../components/BuyerPage/States";
+import PopularProperties from "../components/BuyerPage/PopularProperties";
+import NewProperty from "../components/BuyerPage/NewProperty";
+import Testimonials from "../components/Shared/SocialLogin/Testimonials";
 
 const BuyerScreen = () => {
   return (
@@ -11,6 +14,9 @@ const BuyerScreen = () => {
       <div>
         <PropertyFilter />
         <States />
+        <PopularProperties />
+        <NewProperty />
+        <Testimonials />
       </div>
     </div>
   );

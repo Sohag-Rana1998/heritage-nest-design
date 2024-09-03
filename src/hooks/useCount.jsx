@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from './useAxiosSecure';
+import useAxiosPublic from './useAxiosPublic';
+
 
 const useCount = (search, minPrice, maxPrice) => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic=useAxiosPublic()
   const {
     data: count = 0,
     isPending,
@@ -10,7 +11,7 @@ const useCount = (search, minPrice, maxPrice) => {
   } = useQuery({
     queryKey: ['get-count'],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(
+      const { data } = await axiosPublic.get(
         `/count-properties?status=Verified&search=${search}&minPrice=${minPrice}&maxPrice=${maxPrice}`
       );
       const count = data.count;
