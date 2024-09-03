@@ -8,6 +8,7 @@ import About from "../Pages/About";
 import SearchResult from "../Pages/SearchResult";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/property-details/:id",
-        element: <PropertyDetails />,
+        element: (
+          <PrivateRoute>
+            <PropertyDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",

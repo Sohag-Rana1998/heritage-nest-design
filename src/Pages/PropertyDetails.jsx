@@ -74,20 +74,20 @@ const PropertyDetails = () => {
 
           {/* Overview */}
           <div className="mt-10 bg-[#F9FAFB] w-full px-6 py-10">
-            <h2 className="section-title font-semibold">Overview</h2>
+            <h2 className="text-2xl font-semibold">Overview</h2>
             <div className="my-8  w-full bg-white flex items-center justify-between flex-wrap gap-2 p-4">
-              <div className="text-xl  font-medium flex items-center gap-2">
+              <div className="  font-medium flex items-center gap-2">
                 <MdOutlineBedroomChild /> <span className="font-bold"> 2</span>{" "}
                 Beds
               </div>
-              <div className="text-xl font-medium flex items-center gap-2">
+              <div className=" font-medium flex items-center gap-2">
                 <FaBath /> <span className="font-bold"> 2</span> Bath
               </div>
-              <div className="text-xl font-medium flex items-center gap-2">
+              <div className=" font-medium flex items-center gap-2">
                 <MdOutlineBalcony /> <span className="font-bold"> 2</span>{" "}
                 Balcony
               </div>
-              <div className="text-xl font-medium flex items-center gap-2">
+              <div className=" font-medium flex items-center gap-2">
                 <MdKingBed /> Fully Furnished
               </div>
             </div>

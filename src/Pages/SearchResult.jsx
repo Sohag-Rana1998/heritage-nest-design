@@ -50,20 +50,22 @@ const SearchResult = () => {
 
   return (
     <div className="max-w-7xl w-full mx-auto mt-20">
-      <div className="w-full md:w-[70%]">
+      <div className="w-full lg:w-[70%]">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 border-b pb-5 mb-8">
-          <button className="flex btn hover:bg-[#07488a]  justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+          <button className="flex btn hover:bg-[#07488a]  justify-center items-center gap-2 bg-[#0059B1] hover: text-white px-3 md:px-6 py-2 md:py-4 rounded-[4px]">
             properties (400)
           </button>
-          <button className="flex btn bg-[#ECF5FF] text-black hover:bg-[#0059B1]  justify-center items-center gap-2   hover:text-white px-6 py-4 rounded-[4px]">
+          <button className="flex btn bg-[#ECF5FF] text-black hover:bg-[#0059B1]  justify-center items-center gap-2   hover:text-white px-3 md:px-6 py-2 md:py-4 rounded-[4px]">
             New Projects (400)
           </button>
-          <button className="flex btn bg-[#ECF5FF] text-black hover:bg-[#0059B1]  justify-center items-center gap-2  hover:text-white px-6 py-4 rounded-[4px]">
+          <button className="flex btn bg-[#ECF5FF] text-black hover:bg-[#0059B1]  justify-center items-center gap-2  hover:text-white px-3 md:px-6 py-2 md:py-4 rounded-[4px]">
             Pre-launch offers
           </button>
         </div>
         <div>
-          <h4 className="text-3xl font-bold mb-8">400 results for rental </h4>
+          <h4 className="text-2xl md:text-3xl font-bold mb-8">
+            400 results for rental{" "}
+          </h4>
 
           <div className="flex flex-col gap-8">
             {/* card */}
@@ -78,7 +80,7 @@ const SearchResult = () => {
                     />
                   </div>
                   <div className="w-full">
-                    <div className="text-2xl font-bold flex justify-between items-start gap-4 mb-4">
+                    <div className="text-xl md:text-2xl font-bold flex justify-between items-start gap-4 mb-4">
                       <h3 className="w-full">{property.title}</h3>
                       <h3 className="w-[20%]">${property.maximumPrice}</h3>
                     </div>
@@ -88,7 +90,7 @@ const SearchResult = () => {
                         <GrLocation className="text-[#EE6611] text-xl" />{" "}
                         {property.location}
                       </p>
-                      <Link to={"property-details"}>
+                      <Link to={`/property-details/${property._id}`}>
                         {" "}
                         <button className="px-4 py-2 w-40 bg-white !rounded-none text-black text-lg font-bold btn btn-outline">
                           Bid Property
@@ -110,7 +112,7 @@ const SearchResult = () => {
                           />
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold">Total Area</h4>
+                          <h4 className=" font-bold">Total Area</h4>
                           <p>891 sqft</p>
                         </div>
                       </div>
@@ -123,7 +125,7 @@ const SearchResult = () => {
                           />
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold">Status</h4>
+                          <h4 className=" font-bold">Status</h4>
                           <p>Ready to move</p>
                         </div>
                       </div>
@@ -136,7 +138,7 @@ const SearchResult = () => {
                           />
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold">Total Area</h4>
+                          <h4 className=" font-bold">Total Area</h4>
                           <p>891 sqft</p>
                         </div>
                       </div>
@@ -151,7 +153,7 @@ const SearchResult = () => {
       <div className="divider w-full my-5"></div>
       <div>
         {count > 5 ? (
-          <div className="flex justify-start items-center text-white my-5">
+          <div className="flex justify-center md:justify-start items-center text-white my-5">
             <div className="flex">
               <a
                 onClick={() => {
@@ -182,7 +184,7 @@ const SearchResult = () => {
                   key={page}
                   className={
                     currentPage == page
-                      ? "px-4 py-2 hidden md:block mx-1 transition-colors duration-300 transform bg-[#0059B1] rounded-md sm:inline focus:outline-none  !border-0   hover:text-white  "
+                      ? "px-4 py-2  mx-1 transition-colors duration-300 transform bg-[#0059B1] rounded-md sm:inline focus:outline-none  !border-0   hover:text-white  "
                       : "px-4 py-2 mx-1 text-black capitalize bg-[#ECF5FF] rounded-md  dark:bg-gray-80 cursor-pointer hover:bg-[#0059B1] hover:text-white "
                   }
                 >

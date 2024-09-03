@@ -43,7 +43,7 @@ const NewProperty = () => {
 
   return (
     <div className="!max-w-[1330px] mx-auto w-full mt-10">
-      <h3 className="text-4xl font-semibold mb-5 !px-7">
+      <h3 className="text-2xl md:text-4xl font-semibold mb-5 !px-7">
         New Listed Properties{" "}
       </h3>
 

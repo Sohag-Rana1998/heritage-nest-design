@@ -15,7 +15,7 @@ const Footer = () => {
                 className="w-full h-full rounded-xl"
               />
             </div>
-            <p>
+            <p className="text-center md:text-left">
               Design amazing digital experiences that create more happy in the
               world.
             </p>

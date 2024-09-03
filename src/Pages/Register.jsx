@@ -27,34 +27,30 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    if (res.data.success) {
-      try {
-        //2. User Registration
-        const result = await createUser(data.email, data.password);
-        console.log(result);
+    try {
+      console.log(data);
+      //2. User Registration
+      const result = await createUser(data.email, data.password);
+      console.log(result);
 
-        // 3. Save username and photo in firebase
-        await updateUserProfile(data.name, photo);
-        const userInfo = {
-          name: data.name,
-          email: data.email,
-          photo: photo,
-          date: date,
-        };
+      // 3. Save username and photo in firebase
+      await updateUserProfile(data.name, data.photo);
 
-        reset();
-        Swal.fire({
-          icon: "success",
-          title:
-            "Congratulation! Your account has been registered successfully",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-        navigate(location.state || "/");
-      } catch (err) {
-        console.log(err);
-        toast.error(err.message);
-      }
+      reset();
+      Swal.fire({
+        icon: "success",
+        title: "Congratulation! Your account has been registered successfully",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      navigate(location.state || "/");
+    } catch (err) {
+      console.log(err);
+      Swal.fire({
+        title: `${err.message}`,
+        timer: 1500,
+        showConfirmButton: false,
+      });
     }
   };
 
@@ -63,12 +59,10 @@ const Register = () => {
     setTimeout(setLoading, 500, false);
   }, []);
   return loading ? (
-    <div className="w-full min-h-screen flex justify-center items-center">
-      Loading....
-    </div>
+    <div className="w-full  flex justify-center items-center">Loading....</div>
   ) : (
     <div className="max-w-7xl w-full mx-auto  pt-10  ">
-      <div className="flex flex-col w-full md:w-[70%]   lg:w-[50%] mx-auto min-h-screen  h-full border p-5">
+      <div className="flex flex-col w-full md:w-[70%]   lg:w-[50%] mx-auto   h-full border p-5">
         <div className="">
           <h1 className="text-2xl font-bold">Welcome to Heritage Nest,</h1>
           <h3 className="text-4xl font-bold text-center mt-5">Sign Up</h3>

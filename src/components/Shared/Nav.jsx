@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Nav = () => {
-  // const links = [
-  //   {
-  //     path: "",
-  //   },
-  // ];
+  const { logOut, user } = useAuth();
+
+  const handleLogout = () => {
+    logOut();
+  };
   return (
     <div className="bg-[#ECF5FF] w-full py-2 shadow-xl">
       <div className="max-w-7xl w-full mx-auto flex items-center justify-between">
@@ -44,7 +45,7 @@ const Nav = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-44 p-2 shadow right-0"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-44 p-2 shadow right-0"
                 >
                   <Link to={"/buyer-page"}>
                     <li>Buy</li>
@@ -57,6 +58,9 @@ const Nav = () => {
                   </Link>
                   <Link>
                     <li>Manage Rentals</li>
+                  </Link>
+                  <Link to={"/about"}>
+                    <li>About</li>
                   </Link>
 
                   <Link to={"/login"}>
@@ -101,9 +105,17 @@ const Nav = () => {
             <Link>
               <li>Manage Rentals</li>
             </Link>
-            <Link to={"/login"}>
-              <li>Sign In</li>
-            </Link>
+            {user ? (
+              <>
+                <li onClick={handleLogout} className="cursor-pointer">
+                  Logout
+                </li>
+              </>
+            ) : (
+              <Link to={"/login"}>
+                <li>Sign In</li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>
