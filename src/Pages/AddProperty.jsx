@@ -2,13 +2,14 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 const AddProperty = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -54,9 +55,8 @@ const AddProperty = () => {
           timer: 1500,
         });
         reset();
-      } catch (err) {
-       
-      }
+        navigate("/manage-rentals");
+      } catch (err) {}
     }
   };
 

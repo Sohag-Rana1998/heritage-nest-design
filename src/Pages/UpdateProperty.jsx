@@ -59,15 +59,15 @@ const UpdateProperty = () => {
 
     try {
       const propertyData = {
-        title: data.title,
-        location: data.location,
-        minimumPrice: parseFloat(data.price),
-        maximumPrice: parseFloat(data.price1),
+        title: data.title || title,
+        location: data.location || location,
+        minimumPrice: parseFloat(data.price) || minimumPrice,
+        maximumPrice: parseFloat(data.price1) || maximumPrice,
         image: image || res?.data?.data?.display_url,
-        description: data.description,
-        facilities: data.facilities,
-        area: data.area,
-        status: status,
+        description: data.description || description,
+        facilities: data.facilities || facilities,
+        area: data.area || area,
+        status: status || status,
         sellerName: user?.displayName,
         sellerEmail: user?.email,
         sellerImg: user?.photoURL,
