@@ -6,6 +6,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 const AddProperty = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const {
     register,
@@ -15,37 +17,47 @@ const AddProperty = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    try {
-      const propertyData = {
-        title: data.title,
-        location: data.location,
-        minimumPrice: parseFloat(data.price),
-        maximumPrice: parseFloat(data.price1),
-        image: data.image,
-        description: data.description,
-        facilities: data.facilities,
-        area: data.area,
-        status: "Pending",
-        agentName: data.agent_name,
-        agentEmail: data.agent_email,
-        agentImg: user?.photoURL,
-      };
-      console.log(propertyData);
+    // image upload to imgbb and then get an url
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    console.log(res.data.data);
+    if (res.data.success) {
+      try {
+        const propertyData = {
+          title: data.title,
+          location: data.location,
+          minimumPrice: parseFloat(data.price),
+          maximumPrice: parseFloat(data.price1),
+          image: res?.data?.data?.display_url,
+          description: data.description,
+          facilities: data.facilities,
+          area: data.area,
+          status: "Pending",
+          sellerName: data.seller_name,
+          sellerEmail: data.seller_email,
+          sellerImg: user?.photoURL,
+        };
+        console.log(propertyData);
 
-      const { data: data1 } = await axiosPublic.post(
-        `/add-property`,
-        propertyData
-      );
-      console.log(data1);
-      Swal.fire({
-        icon: "success",
-        title: "Property Added Successfully!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } catch (err) {
-      console.log(err);
+        const { data: data1 } = await axiosPublic.post(
+          `/add-property`,
+          propertyData
+        );
+        console.log(data1);
+        Swal.fire({
+          icon: "success",
+          title: "Property Added Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -133,23 +145,22 @@ const AddProperty = () => {
               Property Image Url
             </label>
             <input
-              type="text"
+              type="file"
               name="image"
               id="image"
               {...register("image", { required: true })}
-              placeholder="Property image Url0"
               className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 "
             />
             {errors.image && (
               <span className="text-red-500">Image is required</span>
             )}
           </div>
-          <div>
+          <div className="w-full ">
             <label htmlFor="price" className="block mb-2 font-bold text-sm">
               Price Range
             </label>
-            <div className="flex items-center gap-3">
-              <div>
+            <div className="flex justify-between items-center gap-3 ">
+              <div className="w-full">
                 <input
                   type="number"
                   name="price"
@@ -162,7 +173,7 @@ const AddProperty = () => {
                   <span className="text-red-500">This is required</span>
                 )}
               </div>
-              <div>
+              <div className="w-full">
                 <input
                   type="number"
                   name="price1"
@@ -180,38 +191,40 @@ const AddProperty = () => {
 
           <div>
             <div className="flex  justify-between mb-2">
-              <label htmlFor="agent_name" className="text-sm font-bold">
-                Agent Name
+              <label htmlFor="seller_name" className="text-sm font-bold">
+                Seller Name
               </label>
             </div>
             <div>
               <input
                 type="text"
-                name="agent_name"
-                id="agent_name"
-                {...register("agent_name", {
+                name="seller_name"
+                id="seller_name"
+                {...register("seller_name", {
                   required: true,
                 })}
-                value={user?.displayName}
+                defaultValue={user?.displayName}
+                readOnly
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>
           </div>
           <div>
             <div className="flex  justify-between mb-2">
-              <label htmlFor="agent_email" className="text-sm font-bold">
-                Agent Email
+              <label htmlFor="seller_email" className="text-sm font-bold">
+                Seller Email
               </label>
             </div>
             <div>
               <input
                 type="email"
-                name="agent_email"
-                id="agent_email"
-                {...register("agent_email", {
+                name="seller_email"
+                id="seller_email"
+                {...register("seller_email", {
                   required: true,
                 })}
-                value={user?.email}
+                defaultValue={user?.email}
+                readOnly
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>

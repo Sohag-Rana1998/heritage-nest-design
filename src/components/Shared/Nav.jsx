@@ -47,23 +47,23 @@ const Nav = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-44 p-2 shadow right-0"
                 >
-                  <Link to={"/buyer-page"}>
+                  <Link to={"/buyer-page"} className="my-1 w-full">
                     <li>Buy</li>
                   </Link>
-                  <Link to={"/buyer-page"}>
+                  <Link to={"/buyer-page"} className="my-1 w-full">
                     <li>Sell</li>
                   </Link>
-                  <Link to={"/"}>
+                  <Link to={"/"} className="my-1 w-full">
                     <li>Services</li>
                   </Link>
-                  <Link to={"/add-property"}>
+                  <Link to={"/manage-rentals"} className="my-1 w-full">
                     <li>Manage Rentals</li>
                   </Link>
-                  <Link to={"/about"}>
+                  <Link to={"/about"} className="my-1 w-full">
                     <li>About</li>
                   </Link>
 
-                  <Link to={"/login"}>
+                  <Link to={"/login"} className="my-1 w-full">
                     <li>Sign In</li>
                   </Link>
                 </ul>
@@ -78,7 +78,7 @@ const Nav = () => {
             <Link to={"/buyer-page"}>
               <li>Buy</li>
             </Link>
-            <Link to={"/buyer-page"}>
+            <Link to={"/sell-property"}>
               <li>Sell</li>
             </Link>
             <Link to={"/buyer-page"}>
@@ -102,7 +102,7 @@ const Nav = () => {
               <li>About Us</li>
             </Link>
 
-            <Link to={"/add-property"}>
+            <Link to={"/manage-rentals"}>
               <li>Manage Rentals</li>
             </Link>
             {user ? (

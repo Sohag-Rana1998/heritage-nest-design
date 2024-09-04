@@ -12,6 +12,7 @@ import OtherServices from "../components/Home/OtherServices";
 import Slider from "../components/Shared/SocialLogin/Slider";
 import { Link, useParams } from "react-router-dom";
 import usePropertyById from "../hooks/usePropertyById";
+import Amnities from "../components/PropertyDetails/Amnities";
 const PropertyDetails = () => {
   const { id } = useParams();
   console.log(id);
@@ -239,7 +240,9 @@ const PropertyDetails = () => {
           </div>
         </div>
       </div>
-
+      <div className="mt-12">
+        <Amnities />
+      </div>
       <div>
         <OtherServices />
       </div>

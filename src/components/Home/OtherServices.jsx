@@ -5,7 +5,7 @@ const OtherServices = () => {
     <div className="mt-20 max-w-7xl w-full mx-auto">
       <div>
         <h2
-          className="section-title text-center
+          className="section-title text-center font-bold
       "
         >
           Other Services

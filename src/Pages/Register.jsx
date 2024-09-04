@@ -11,13 +11,16 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import Swal from "sweetalert2";
 import SocialLogin from "../components/Shared/SocialLogin/SocialLogin";
 import useAuth from "../hooks/useAuth";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
-
   const [type, setType] = useState(false);
   const { updateUserProfile, createUser } = useAuth();
+  const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const {
     register,
@@ -27,30 +30,44 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    try {
-      console.log(data);
-      //2. User Registration
-      const result = await createUser(data.email, data.password);
-      console.log(result);
+    // image upload to imgbb and then get an url
+    const imageFile = { image: data.photo[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    console.log("photo", res.data.data);
 
-      // 3. Save username and photo in firebase
-      await updateUserProfile(data.name, data.photo);
+    if (res.data.success) {
+      const photo = res?.data?.data?.display_url;
 
-      reset();
-      Swal.fire({
-        icon: "success",
-        title: "Congratulation! Your account has been registered successfully",
-        timer: 1500,
-        showConfirmButton: false,
-      });
-      navigate(location.state || "/");
-    } catch (err) {
-      console.log(err);
-      Swal.fire({
-        title: `${err.message}`,
-        timer: 1500,
-        showConfirmButton: false,
-      });
+      try {
+        console.log(data);
+        //2. User Registration
+        const result = await createUser(data.email, data.password);
+        console.log(result);
+
+        // 3. Save username and photo in firebase
+        await updateUserProfile(data.name, photo);
+
+        reset();
+        Swal.fire({
+          icon: "success",
+          title:
+            "Congratulation! Your account has been registered successfully",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        navigate(location.state || "/");
+      } catch (err) {
+        console.log(err);
+        Swal.fire({
+          title: `${err.message}`,
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
     }
   };
 
@@ -95,14 +112,13 @@ const Register = () => {
                     htmlFor="photo"
                     className="block mb-2 font-bold text-sm"
                   >
-                    Your Photo URL
+                    Your Photo
                   </label>
                   <input
-                    type="text"
+                    type="file"
                     name="photo"
                     id="photo"
                     {...register("photo", { required: true })}
-                    placeholder="Your PhotoURL"
                     className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50"
                   />
                   {errors.photo && (

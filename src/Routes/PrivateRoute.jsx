@@ -7,11 +7,11 @@ import { AuthContext } from "../Provider/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
-  const { user } = useContext(AuthContext);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(setLoading, 500, false);
-  }, []);
+  const { user, loading } = useContext(AuthContext);
+
+  // useEffect(() => {
+  //   setTimeout(setLoading, 500, false);
+  // }, []);
 
   if (loading) {
     return (
