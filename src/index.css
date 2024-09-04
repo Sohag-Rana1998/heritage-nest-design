@@ -48,7 +48,7 @@
 }
 .swiper-button-prev:after,
 .swiper-button-next:after {
-  background-color: #0059b1;
+  background-color: #5490cb;
   font-size: 20px !important;
   color: #ffff;
   padding: 16px 19px;
@@ -56,8 +56,10 @@
 }
 
 .swiper-button-prev {
+  top: 120px !important;
   left: 13px !important;
 }
 .swiper-button-next {
+  top: 120px !important;
   right: 13px !important;
 }

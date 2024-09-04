@@ -15,7 +15,7 @@ import PropertyCard from "../../BuyerPage/PropertyCard";
 
 const Slider = () => {
   const { properties, isLoading, refetch } = useAllProperties();
-  console.log(properties);
+
   const [slidesPerView, setSlidesPerView] = useState(
     getSlidesPerView(window.innerWidth)
   );

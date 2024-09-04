@@ -16,7 +16,7 @@ const usePropertyByEmail = () => {
         const { data } = await axiosPublic.get(
           `/seller-properties?email=${user?.email}`
         );
-        console.log(data);
+
         return data;
       }
     },

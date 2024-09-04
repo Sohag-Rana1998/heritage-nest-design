@@ -35,7 +35,7 @@ const ManageRentals = () => {
       if (result.isConfirmed) {
         try {
           const { data } = await axiosPublic.delete(`/delete-property/${id}`);
-          console.log(data);
+     
           refetch();
           Swal.fire({
             title: "Deleted!",
@@ -45,12 +45,12 @@ const ManageRentals = () => {
             timer: 1500,
           });
         } catch (error) {
-          console.log(error.message);
+          
         }
       }
     });
   };
-  console.log(myProperties);
+  
   return isLoading ? (
     <div className="w-full min-h-screen flex justify-center items-center">
       <span className="loading loading-infinity loading-lg"></span>

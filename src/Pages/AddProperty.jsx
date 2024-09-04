@@ -24,7 +24,7 @@ const AddProperty = () => {
         "content-type": "multipart/form-data",
       },
     });
-    console.log(res.data.data);
+
     if (res.data.success) {
       try {
         const propertyData = {
@@ -41,13 +41,12 @@ const AddProperty = () => {
           sellerEmail: data.seller_email,
           sellerImg: user?.photoURL,
         };
-        console.log(propertyData);
 
         const { data: data1 } = await axiosPublic.post(
           `/add-property`,
           propertyData
         );
-        console.log(data1);
+
         Swal.fire({
           icon: "success",
           title: "Property Added Successfully!",
@@ -56,7 +55,7 @@ const AddProperty = () => {
         });
         reset();
       } catch (err) {
-        console.log(err);
+       
       }
     }
   };

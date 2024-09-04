@@ -20,7 +20,6 @@ const UpdateProperty = () => {
   const axiosPublic = useAxiosPublic();
   const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-  console.log(property);
 
   useEffect(() => {
     setTimeout(setLoading, 500, false);
@@ -47,7 +46,6 @@ const UpdateProperty = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     // image upload to imgbb and then get an url
     const imageFile = { image: data?.image[0] };
 
@@ -74,14 +72,12 @@ const UpdateProperty = () => {
         sellerEmail: user?.email,
         sellerImg: user?.photoURL,
       };
-      console.log(propertyData);
 
-      //   Post request to server
       const { data: data1 } = await axiosPublic.put(
         `/property/${_id}`,
         propertyData
       );
-      console.log(data1);
+
       Swal.fire({
         icon: "success",
         title: "Property Updated Successfully",
@@ -90,10 +86,7 @@ const UpdateProperty = () => {
       });
       reset();
       navigate("/manage-rentals");
-    } catch (err) {
-      console.log(err);
-      console.log(err.message);
-    }
+    } catch (err) {}
   };
 
   return (

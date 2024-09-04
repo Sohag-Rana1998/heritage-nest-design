@@ -37,16 +37,13 @@ const Register = () => {
         "content-type": "multipart/form-data",
       },
     });
-    console.log("photo", res.data.data);
 
     if (res.data.success) {
       const photo = res?.data?.data?.display_url;
 
       try {
-        console.log(data);
         //2. User Registration
         const result = await createUser(data.email, data.password);
-        console.log(result);
 
         // 3. Save username and photo in firebase
         await updateUserProfile(data.name, photo);
@@ -61,7 +58,6 @@ const Register = () => {
         });
         navigate(location.state || "/");
       } catch (err) {
-        console.log(err);
         Swal.fire({
           title: `${err.message}`,
           timer: 1500,

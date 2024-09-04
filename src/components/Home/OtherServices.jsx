@@ -5,7 +5,7 @@ const OtherServices = () => {
     <div className="mt-20 max-w-7xl w-full mx-auto">
       <div>
         <h2
-          className="section-title text-center font-bold
+          className="section-title text-center font-bold mb-10
       "
         >
           Other Services
@@ -22,7 +22,7 @@ const OtherServices = () => {
               />
             </div>
             <div className="w-full ">
-              <h3 className="font-semibold text-2xl">
+              <h3 className="font-semibold text-2xl mb-4">
                 Advanced Property Search
               </h3>
               <p className="font-medium">
@@ -42,7 +42,7 @@ const OtherServices = () => {
               />
             </div>
             <div className="w-full ">
-              <h3 className="font-semibold text-2xl">
+              <h3 className="font-semibold text-2xl mb-4">
                 Virtual Tours and Multimedia
               </h3>
               <p className="font-medium">
@@ -62,7 +62,7 @@ const OtherServices = () => {
               />
             </div>
             <div className="w-full ">
-              <h3 className="font-semibold text-2xl">
+              <h3 className="font-semibold text-2xl mb-4">
                 Secure Online Transactions
               </h3>
               <p className="font-medium">

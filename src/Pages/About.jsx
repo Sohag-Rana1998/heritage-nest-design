@@ -8,7 +8,7 @@ import Testimonials from "../components/Shared/SocialLogin/Testimonials";
 const About = () => {
   return (
     <div className="w-full">
-      <div className="w-full h-[300px] bg-[url(https://i.postimg.cc/q7Fx8xYK/Screenshot-10.png)] bg-no-repeat bg-bottom bg-cover"></div>
+      <div className="w-full h-[320px] bg-[url(https://i.postimg.cc/q7Fx8xYK/Screenshot-10.png)] bg-no-repeat bg-bottom bg-cover"></div>
 
       <div className="max-w-7xl w-full mx-auto">
         <div className="mt-10">

@@ -1,52 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { GrLocation } from "react-icons/gr";
 import usePropertyByQuery from "../hooks/usePropertyByQuery";
-import useCount from "../hooks/useCount";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Range } from "react-range";
 import Testimonials from "../components/Shared/SocialLogin/Testimonials";
 const SearchResult = () => {
-  // const { searchText } = useParams();
-  // console.log(searchText);
+  const { query } = useParams();
+
+  const location1 = query?.split("&")?.[0];
+  const search = query?.split("&")?.[1];
+  search.slice(1, location1.length - 1);
+
   const [values, setValues] = React.useState([50]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const [search, setSearch] = useState("");
+  const [searchText, setSearch] = useState(search || "");
+  const [location, setSetlocation] = useState(location1 || "");
+
   const [loader, setLoader] = useState(false);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
-  const { count, reload, isPending } = useCount(search, minPrice, maxPrice);
-  console.log(loader);
-  const { allProperties, refetch, isLoading } = usePropertyByQuery(
+  const { data, refetch, isLoading } = usePropertyByQuery(
     currentPage,
     itemsPerPage,
-    search,
+    searchText,
     minPrice,
-    maxPrice
+    maxPrice,
+    location
   );
+  const count = data?.count || 0;
 
   useEffect(() => {
-    setTimeout(setLoader, 1300, false);
-  }, []);
-
-  console.log(count);
+    setTimeout(setLoader, 1000, false);
+    refetch;
+  }, [currentPage, itemsPerPage, searchText, minPrice, maxPrice, location]);
 
   const totalPage = Math.ceil(parseInt(count) / itemsPerPage);
 
   const pageArray = [...Array(totalPage).keys()].map((element) => element + 1);
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    setLoader(true);
-    setMinPrice(0);
-    setMaxPrice(0);
-    const searchText = e.target.search.value;
-    setSearch(searchText);
-    setTimeout(refetch, 500);
-    setTimeout(reload, 500);
-    setTimeout(setLoader, 1000, false);
-    e.target.reset();
-  };
 
   return (
     <div className="max-w-7xl w-full mx-auto mt-20">
@@ -69,7 +60,7 @@ const SearchResult = () => {
 
           <div className="flex flex-col gap-8">
             {/* card */}
-            {allProperties?.map((property) => (
+            {data?.result?.map((property) => (
               <div key={property._id}>
                 <div className="flex flex-col md:flex-row items-start justify-between gap-8 p-6 bg-[#F9FAFB] ">
                   <div className="h-52 w-full md:w-[25%] rounded-md">
@@ -79,23 +70,29 @@ const SearchResult = () => {
                       className="h-full w-full rounded-md"
                     />
                   </div>
-                  <div className="w-full">
-                    <div className="text-xl md:text-2xl font-bold flex justify-between items-start gap-4 mb-4">
-                      <h3 className="w-full">{property.title}</h3>
-                      <h3 className="w-[20%]">${property.maximumPrice}</h3>
-                    </div>
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                      <p className="flex items-center gap-2 w-full">
-                        {" "}
-                        <GrLocation className="text-[#EE6611] text-xl" />{" "}
-                        {property.location}
-                      </p>
-                      <Link to={`/property-details/${property._id}`}>
-                        {" "}
-                        <button className="px-4 py-2 w-40 bg-white !rounded-none text-black text-lg font-bold btn btn-outline">
-                          Bid Property
-                        </button>
-                      </Link>
+                  <div className="w-full ">
+                    <div className="flex justify-between gap-4">
+                      <div className=" ">
+                        <h3 className=" text-xl md:text-2xl font-bold mb-4 ">
+                          {property.title}
+                        </h3>
+                        <p className="flex items-center gap-2 ">
+                          {" "}
+                          <GrLocation className="text-[#EE6611] text-xl" />{" "}
+                          {property.location}
+                        </p>
+                      </div>
+                      <div className="">
+                        <h3 className="w-[20%] mb-4 text-2xl font-bold">
+                          ${property.maximumPrice}
+                        </h3>
+                        <Link to={`/property-details/${property._id}`}>
+                          {" "}
+                          <button className="px-4 py-2 w-40 bg-white !rounded-[4px] text-black  font-medium btn btn-outline border-black">
+                            Bid Property
+                          </button>
+                        </Link>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -214,7 +211,7 @@ const SearchResult = () => {
         ) : (
           <div>
             <div className="w-full flex flex-col justify-center mt-5">
-              {allProperties && allProperties.length === 0 ? (
+              {data?.result && data?.result.length === 0 ? (
                 <h3 className="text-center text-3xl font-bold my-10">
                   {" "}
                   No Job Property Found
@@ -226,6 +223,7 @@ const SearchResult = () => {
                 <button
                   onClick={() => {
                     setSearch("");
+                    setSetlocation("");
                     setMinPrice(0);
                     setMaxPrice(0);
                     setTimeout(refetch, 500);

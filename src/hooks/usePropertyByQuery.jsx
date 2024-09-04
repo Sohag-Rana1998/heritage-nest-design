@@ -5,26 +5,29 @@ import useAxiosPublic from "./useAxiosPublic";
 const usePropertyByQuery = (
   currentPage,
   itemsPerPage,
-  search,
+  searchText,
   minPrice,
-  maxPrice
+  maxPrice,
+  location
 ) => {
   const axiosPublic = useAxiosPublic();
   const {
-    data: allProperties = [],
+    data = {},
     isLoading,
     refetch,
   } = useQuery({
     queryKey: ["pagination-properties"],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/properties?page=${currentPage}&size=${itemsPerPage}&search=${search}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+        `/properties?page=${currentPage}&size=${itemsPerPage}&search=${searchText}&minPrice=${minPrice}&maxPrice=${maxPrice}&location=${
+          location || ""
+        }`
       );
-      console.log(data);
+
       return data;
     },
   });
-  return { allProperties, isLoading, refetch };
+  return { data, isLoading, refetch };
 };
 
 export default usePropertyByQuery;

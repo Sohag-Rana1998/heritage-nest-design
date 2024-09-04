@@ -22,8 +22,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // console.log(location);
-
   const {
     register,
     handleSubmit,
@@ -36,7 +34,6 @@ const Login = () => {
 
     signIn(email, password)
       .then(() => {
-        // console.log(result.user);
         Swal.fire({
           icon: "success",
           title: "Log In successful",
@@ -47,7 +44,6 @@ const Login = () => {
         navigate(location?.state || "/");
       })
       .catch((error) => {
-        console.error(error);
         Swal.fire({
           icon: "error",
           title:

@@ -79,7 +79,10 @@ export default function Testimonials() {
                 <div className="mb-4 bg-[#ECF5FF] px-10 py-5    md:px-5 text-black ">
                   <div className="">
                     <div className="flex flex-col justify-center items-center">
-                      <Rating style={{ maxWidth: 150 }} value={review.star} />
+                      <Rating
+                        style={{ maxWidth: 150, color: "#FEC84B" }}
+                        value={review.star}
+                      />
                       <p className="text-center mb-4 mt-4">
                         {review?.review?.slice(0, 250)}
                       </p>

@@ -10,9 +10,9 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddProperty from "../Pages/AddProperty";
-import Dashboard from "../Layout/Dashboard";
 import ManageProperty from "../Pages/ManageRentals";
 import UpdateProperty from "../Pages/updateProperty";
+import AllProperties from "../Pages/AllProperties";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,11 @@ const router = createBrowserRouter([
         element: <BuyerScreen />,
       },
       {
-        path: "/search-result",
+        path: "/all-properties",
+        element: <AllProperties />,
+      },
+      {
+        path: "/search-result/:query",
         element: <SearchResult />,
       },
       {
@@ -42,7 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/property-details/:id",
-        element: <PropertyDetails />,
+        element: (
+          <PrivateRoute>
+            <PropertyDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/sell-property",

@@ -9,8 +9,8 @@ const Nav = () => {
     logOut();
   };
   return (
-    <div className="bg-[#ECF5FF] w-full py-2 shadow-xl">
-      <div className="max-w-7xl w-full mx-auto flex items-center justify-between">
+    <div className="bg-[#ECF5FF] w-full py-2 shadow-lg">
+      <div className="max-w-7xl px-2 md:px-4 lg:px-0 w-full mx-auto flex items-center justify-between">
         {/* Menu for Mobile device */}
         <div className="w-full relative block md:hidden">
           <div className="flex  justify-between items-center w-full">

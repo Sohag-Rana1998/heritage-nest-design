@@ -15,7 +15,7 @@ import usePropertyById from "../hooks/usePropertyById";
 import Amnities from "../components/PropertyDetails/Amnities";
 const PropertyDetails = () => {
   const { id } = useParams();
-  console.log(id);
+
 
   const { property, isLoading, refetch } = usePropertyById(id);
   const [values, setValues] = useState([50, 800]);
@@ -53,17 +53,17 @@ const PropertyDetails = () => {
         <div className="w-full md:w-[65%]">
           <div className="">
             <div>
-              <div className="w-full h-[450px] bg-gray-300 mb-5">
+              <div className="w-full h-[400px] bg-gray-300 mb-5">
                 <img src={property?.image} alt="" className="h-full w-full" />
               </div>
               <div className="flex flex-col md:flex-row items-center justify-between gap-5">
-                <div className="w-full md:w-[38%] h-[200px] bg-gray-300">
+                <div className="w-full md:w-[38%] h-[160px] bg-gray-300">
                   <img src={property?.image} alt="" className="h-full w-full" />
                 </div>
-                <div className="w-full md:w-[38%] h-[200px] bg-gray-300">
+                <div className="w-full md:w-[38%] h-[160px] bg-gray-300">
                   <img src={property?.image} alt="" className="h-full w-full" />
                 </div>
-                <div className="w-full relative md:w-[20%] h-[200px] bg-gray-300">
+                <div className="w-full relative md:w-[24%] h-[160px] bg-gray-300">
                   <img src={property?.image} alt="" className="h-full w-full" />
                   <div className="absolute inset-0 bg-black/40 flex justify-center items-center z-10">
                     <h3 className="text-xl font-bold text-white">View More</h3>
@@ -73,8 +73,8 @@ const PropertyDetails = () => {
             </div>
           </div>
 
-          {/* Overview */}
-          <div className="mt-10 bg-[#F9FAFB] w-full px-6 py-10">
+          {/* Overview  start*/}
+          <div className="mt-10 bg-[#F9FAFB] w-full  p-6">
             <h2 className="text-2xl font-semibold">Overview</h2>
             <div className="my-8  w-full bg-white flex items-center justify-between flex-wrap gap-2 p-4">
               <div className="  font-medium flex items-center gap-2">
@@ -133,95 +133,101 @@ const PropertyDetails = () => {
               </div>
             </div>
           </div>
+          {/* Overview  end*/}
         </div>
-        <div className="w-full md:w-[33%] bg-[#ECF5FF] p-6">
-          <h6>Property Value</h6>
-          <h4 className="text-xl font-bold mt-2">
-            $ <span> {property.minimumPrice} </span> k - $
-            <span>{property.maximumPrice}</span>k
-          </h4>
-          <p className="mt-4">
-            Your bid can not be than 10% of the property Minimum value.
-          </p>
 
-          <div className="mt-4">
-            <label htmlFor="">Min</label>
-            <input
-              type="text"
-              className="input w-full bg-white text-black "
-              defaultValue={minP}
-            />
-          </div>
-          <div className="mt-4">
-            <label htmlFor="">Max</label>
-            <input
-              type="text"
-              className="input w-full bg-white text-black "
-              defaultValue={maxP}
-            />
-          </div>
+        {/* Right part start */}
+        <div className="w-full md:w-[33%]">
+          <div className=" p-6 bg-[#ECF5FF]">
+            <h6>Property Value</h6>
+            <h4 className="text-xl font-bold mt-2">
+              $ <span> {property.minimumPrice} </span> k - $
+              <span>{property.maximumPrice}</span>k
+            </h4>
+            <p className="mt-4">
+              Your bid can not be than 10% of the property Minimum value.
+            </p>
 
-          <div className="w-full mt-5">
-            <Range
-              step={1}
-              min={min}
-              max={max}
-              values={values}
-              onChange={(values) => setValues(values)}
-              renderTrack={({ props, children }) => (
-                <div
-                  {...props}
-                  style={{
-                    ...props.style,
-                    height: "10px",
-                    width: "100%",
-                    background: getTrackBackground({
-                      values,
-                      colors: ["#ccc", "#EEEEEE", "#ccc"],
-                      min,
-                      max,
-                    }),
-                  }}
-                >
-                  {children}
-                </div>
-              )}
-              renderThumb={({ props, isDragged }) => (
-                <div
-                  {...props}
-                  style={{
-                    ...props.style,
-                    height: "20px",
-                    width: "20px",
-                    borderRadius: "50%",
-                    backgroundColor: "#EE6611",
-                    border: "3px solid #EE6611",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0px 2px 6px #AAA",
-                    outlineColor: "#EE6611",
-                  }}
-                >
+            <div className="mt-4">
+              <label htmlFor="">Min</label>
+              <input
+                type="text"
+                className="input w-full bg-white text-black "
+                value={minP}
+              />
+            </div>
+            <div className="mt-4">
+              <label htmlFor="">Max</label>
+              <input
+                type="text"
+                className="input w-full bg-white text-black "
+                value={maxP}
+              />
+            </div>
+
+            <div className="w-full mt-5">
+              <Range
+                step={1}
+                min={min}
+                max={max}
+                values={values}
+                onChange={(values) => setValues(values)}
+                renderTrack={({ props, children }) => (
                   <div
+                    {...props}
                     style={{
-                      height: "10px",
-                      width: "10px",
-                      backgroundColor: isDragged ? "#EE6611" : "#EE6611",
+                      ...props.style,
+                      height: "15px",
+                      width: "100%",
+                      background: getTrackBackground({
+                        values,
+                        colors: ["#ccc", "#EEEEEE", "#ccc"],
+                        min,
+                        max,
+                      }),
                     }}
-                  />
-                </div>
-              )}
-            />
+                  >
+                    {children}
+                  </div>
+                )}
+                renderThumb={({ props, isDragged }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "20px",
+                      width: "20px",
+                      borderRadius: "50%",
+                      backgroundColor: "#EE6611",
+                      border: "3px solid #EE6611",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0px 2px 6px #AAA",
+                      outlineColor: "#EE6611",
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: "10px",
+                        width: "10px",
+                        backgroundColor: isDragged ? "#EE6611" : "#EE6611",
+                      }}
+                    />
+                  </div>
+                )}
+              />
+            </div>
+
+            <div className="flex justify-center mt-5">
+              <button className="  hover:bg-[#07488a] w-full md:w-40  bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
+                Bid Property
+              </button>
+            </div>
           </div>
 
-          <div className="flex justify-center mt-5">
-            <button className="  hover:bg-[#07488a] w-full md:w-40  bg-[#0059B1] hover: text-white px-6 py-4 rounded-[4px]">
-              Bid Property
-            </button>
-          </div>
-
-          <div className="w-full h-[500px] mt-8">
+          {/* Map start */}
+          <div className="w-full h-[515px] mt-8">
             <MapContainer
               className="h-full w-full rounded-md"
               center={[25.0318, 55.19]}
@@ -238,25 +244,35 @@ const PropertyDetails = () => {
               </Marker>
             </MapContainer>
           </div>
+          {/* Map end */}
         </div>
+        {/* Right part end */}
       </div>
+
+      {/* Aminities start  */}
       <div className="mt-12">
         <Amnities />
       </div>
+      {/* Aminities end  */}
+
+      {/* Other service start  */}
       <div>
         <OtherServices />
       </div>
+      {/* Other service end  */}
+
+      {/* Slider start */}
       <div className="my-10">
         <div className="flex justify-end mb-3">
-          <Link
-            to={"/buyer-page"}
-            className="font-bold underline text-[#0059B1]"
-          >
-            See all properties
+          <Link to={"/all-properties"} className="">
+            <button className="text-lg font-semibold text-[#0059B1] underline ">
+              See all property
+            </button>
           </Link>
         </div>
         <Slider />
       </div>
+      {/* Slider end */}
     </div>
   );
 };

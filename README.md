@@ -37,6 +37,8 @@
 - Create a .env.local file in the project root directory and add the necessary
   environment variables.
 
+  - firebase confiq, imgbd api key, server api
+
   4. Run the Application:
 
   - npm run dev
