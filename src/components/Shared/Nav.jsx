@@ -63,9 +63,17 @@ const Nav = () => {
                     <li>About</li>
                   </Link>
 
-                  <Link to={"/login"} className="my-1 w-full">
-                    <li>Sign In</li>
-                  </Link>
+                  {user ? (
+                    <>
+                      <li onClick={handleLogout} className="cursor-pointer">
+                        Logout
+                      </li>
+                    </>
+                  ) : (
+                    <Link to={"/login"}>
+                      <li>Sign In</li>
+                    </Link>
+                  )}
                 </ul>
               </div>
             </div>

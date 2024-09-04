@@ -23,7 +23,7 @@ const AllProperties = () => {
     minPrice,
     maxPrice
   );
-  const count = data?.count;
+  const count = data?.count || 0;
   useEffect(() => {
     setTimeout(setLoader, 1300, false);
   }, []);
@@ -67,18 +67,6 @@ const AllProperties = () => {
       <div className="max-width">
         <div>
           <div className=" flex px-2 md:px-10 flex-col md:flex-row justify-between gap-3 items-center mx-auto w-full  mb-5  ">
-            <div className="w-[90%] md:w-full">
-              <label
-                onClick={() => {
-                  setModalLoading(false);
-                  setTimeout(setModalLoading, 500, true);
-                }}
-                htmlFor="my_modal_7"
-                className=" bg-[#0059B1] flex items-center w-full md:w-60 rounded-xl hover:bg-gray-500 text-white px-4 py-2"
-              >
-                <FaFilter className="mr-2" /> Filter By Price Range
-              </label>
-            </div>
             <div className="flex justify-end w-[90%] md:w-full ">
               <form onSubmit={handleSearch} className="w-full lg:w-[60%] ">
                 <label htmlFor="search"></label>
